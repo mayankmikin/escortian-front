@@ -1,0 +1,155 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "escortianangular": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/escortianangular",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/mobirise/css/mbr-additional.css",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/web/assets/mobirise-icons/mobirise-icons.css",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/bootstrap/css/bootstrap.min.css",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/bootstrap/css/bootstrap-grid.min.css",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/bootstrap/css/bootstrap-reboot.min.css",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/socicon/css/styles.css",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/dropdown/css/style.css",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/theme/css/style.css",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/gallery/style.css"
+            ],
+            "scripts": [
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/web/assets/jquery/jquery.min.js",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/popper/popper.min.js",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/bootstrap/js/bootstrap.min.js",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/smoothscroll/smooth-scroll.js",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/touchswipe/jquery.touch-swipe.min.js",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/mobirise-shop/script.js",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/dropdown/js/script.min.js",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/theme/js/script.js",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/gallery/player.min.js",
+              "src/bootstrap-template/bootstrap-ecommerce-template/assets/gallery/script.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "escortianangular:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "escortianangular:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "escortianangular:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "escortianangular-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "escortianangular:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "escortianangular:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "escortianangular"
+}
