@@ -11,7 +11,7 @@ import { Escorts } from '../model/escort';
 export class EscortService {
 
 
-  private _url: string ='http://localhost:9000/';
+  private _url: string ='http://localhost:9000';
 
 	constructor(private http:HttpClient) { }
 
