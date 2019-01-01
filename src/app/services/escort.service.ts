@@ -11,8 +11,9 @@ import { Escorts } from '../model/escort';
 export class EscortService {
 
 
-  private _url: string ='http://localhost:9000';
-
+  //private _url: string ='http://localhost:9000';
+  private _url: string ='https://c7d7e428.ngrok.io';
+  
 	constructor(private http:HttpClient) { }
 
 
