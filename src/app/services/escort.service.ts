@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 //import 'rxjs/add/observable/throw'; 
 import { HttpClient, HttpErrorResponse ,HttpHeaders} from '@angular/common/http';
 import { Escorts } from '../model/escort';
+import { UrlsSettings } from './urls';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,8 @@ import { Escorts } from '../model/escort';
 export class EscortService {
 
 
-  //private _url: string ='http://localhost:9000';
-  private _url: string ='https://c7d7e428.ngrok.io';
-  
+  private _url: string =UrlsSettings.prod_url;
+
 	constructor(private http:HttpClient) { }
 
 
@@ -31,4 +31,8 @@ export class EscortService {
 		return this.http.get<Escorts>(`${this._url}/person`);
                                  
     }
+    findFacets(): Observable<any> {
+      return this.http.get<any>(`${this._url}/facets/direct/getAll`);
+                                   
+      }
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
@@ -8,8 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
-import { ChildComponent } from './child/child.component'
-
+import { EscortListComponent } from './page/escort-list/escort-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,18 @@ import { ChildComponent } from './child/child.component'
     LoginComponent,
     HomeComponent,
     DashboardComponent,
-    ChildComponent
+    EscortListComponent,
+
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

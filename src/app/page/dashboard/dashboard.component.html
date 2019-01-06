@@ -5,69 +5,15 @@
       Welcome back Admin.
     </div>
   </div>
-
-  <nav class="navbar navbar-expand-sm bg-light">
-        <span>Admin Menu: </span>
-        <!-- Links -->
-        <ul class="nav nav-tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">View All</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Create New Profile</a>
-                </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link " href="#">Disabled</a>
-                </li> -->
-              </ul>
-      
-      </nav>
-
-      <app-child [dynamicdata]="dynamicdata"></app-child>
+  
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+  </nav> -->
+  <app-escort-list></app-escort-list>
+	<router-outlet></router-outlet>
 
 
-  <!-- main app container -->
-<!-- <div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h3>Angular 6 Template-Driven Form Validation</h3>
-                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
-                        <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
-                            <div *ngIf="firstName.errors.required">First Name is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
-                        <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
-                            <div *ngIf="lastName.errors.required">Last Name is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
-                        <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-                            <div *ngIf="email.errors.required">Email is required</div>
-                            <div *ngIf="email.errors.email">Email must be a valid email address</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
-                        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-                            <div *ngIf="password.errors.required">Password is required</div>
-                            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary">Register</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
+
+
