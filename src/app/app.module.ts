@@ -12,6 +12,7 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { EscortListComponent } from './page/escort-list/escort-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
