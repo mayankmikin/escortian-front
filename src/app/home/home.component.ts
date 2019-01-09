@@ -3,6 +3,8 @@ import { EscortService } from '../services/escort.service';
 import { Escorts, Person } from '../model/escort';
 import { NgbModal,ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
+import { SelectedFacets, SelectedCategory } from '../model/filtering';
+import { Utils } from '../model/utils';
 
 
 
@@ -23,12 +25,12 @@ export class HomeComponent implements OnInit {
    // config.pageSize=9;
    //config.boundaryLinks = true;
    // this.pagesize=config.pageSize;
-    
+ 
   }
 
   //private baseurl: string ='http://localhost:9000/upload/';
   model: Person[];
-  facets: any;
+  facets: any[];
   pages:number;
   pagesize:number;
   modelsize:number;
@@ -39,20 +41,32 @@ export class HomeComponent implements OnInit {
     this.currentPage=1;
     this.escorts.findAll().subscribe((data:  Escorts) => {
       this.model  =  data._embedded.person;
-      //console.log(this.model);
+      this.modaldatafull=data._embedded.person;
+      console.log('escort list model array is ');
+      console.log(this.model);
       this.pages= Math.ceil((this.model.length)/this.pagesize);
       //console.log('pages are: '+this.pages);
       this.modelsize=this.model.length;
       this.pagesize=9;
+
+      this.escorts.findFacets().subscribe((data:  any) => {
+        this.facets  =  data.aggregations.agg_keyword_facet.facet_name.buckets;
+        console.log('facet data is');
+        console.log(data);
+    });
+
   });
-  this.escorts.findFacets().subscribe((data:  any) => {
-    this.facets  =  data;
-    console.log(data);
-});
+
+  // adding empty arrays
+  //console.log('init value for selectedFacets is');
+  this.selectedFacets.categories=[]
+    //console.log(this.selectedFacets);
+ 
   }
  
   closeResult: string;
   modaldata:any;
+  modaldatafull:any;
   showOldPriceslashed:false;
   
   open(content,event) {
@@ -79,8 +93,16 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
-
+  // Filtering 
+   tempArr:any=[];
+  selectedFacets: SelectedFacets= new SelectedFacets()
+  onChangeCategory(event, cat: any, subcat: any){ // Use appropriate model type instead of any
+    console.log('selected category is :')
+    console.log(cat)
+    console.log('selected subcategory is :')
+    console.log(subcat)
+   this.model= Utils.filtering(this.selectedFacets,cat,subcat,this.modaldata,this.modaldatafull,this.model)
+  }
 
 
   
