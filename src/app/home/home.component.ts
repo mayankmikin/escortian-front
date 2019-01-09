@@ -5,6 +5,7 @@ import { NgbModal,ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
 import { SelectedFacets, SelectedCategory } from '../model/filtering';
 import { Utils } from '../model/utils';
+import { Facets } from '../model/facets';
 
 
 
@@ -30,13 +31,16 @@ export class HomeComponent implements OnInit {
 
   //private baseurl: string ='http://localhost:9000/upload/';
   model: Person[];
-  facets: any[];
+ // facets: any[];
+  facets:Facets= new Facets();
   pages:number;
   pagesize:number;
   modelsize:number;
   currentPage:number;
   //initializing p to one
   p: number = 1;
+  public isFirstCollapsed = false;
+  public isSecondCollapsed = false;
   ngOnInit() {
     this.currentPage=1;
     this.escorts.findAll().subscribe((data:  Escorts) => {
@@ -50,7 +54,9 @@ export class HomeComponent implements OnInit {
       this.pagesize=9;
 
       this.escorts.findFacets().subscribe((data:  any) => {
-        this.facets  =  data.aggregations.agg_keyword_facet.facet_name.buckets;
+        this.facets.agg_keyword_facet  =  data.aggregations.agg_keyword_facet.facet_name.buckets;
+        this.facets.agg_keyword_long_facet  =  data.aggregations.agg_keyword_long_facet.facet_name.buckets;
+        this.facets.agg_keyword_multi_facet  =  data.aggregations.agg_keyword_multi_facet.facet_name.buckets;
         console.log('facet data is');
         console.log(data);
     });
@@ -97,10 +103,6 @@ export class HomeComponent implements OnInit {
    tempArr:any=[];
   selectedFacets: SelectedFacets= new SelectedFacets()
   onChangeCategory(event, cat: any, subcat: any){ // Use appropriate model type instead of any
-    console.log('selected category is :')
-    console.log(cat)
-    console.log('selected subcategory is :')
-    console.log(subcat)
    this.model= Utils.filtering(this.selectedFacets,cat,subcat,this.modaldata,this.modaldatafull,this.model)
   }
 
