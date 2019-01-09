@@ -6,7 +6,7 @@ import {NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
 import { SelectedFacets, SelectedCategory } from '../model/filtering';
 import { Utils } from '../model/utils';
 import { Facets } from '../model/facets';
-
+import { Options } from 'ng5-slider';
 
 
 @Component({
@@ -39,8 +39,8 @@ export class HomeComponent implements OnInit {
   currentPage:number;
   //initializing p to one
   p: number = 1;
-  public isFirstCollapsed = false;
-  public isSecondCollapsed = false;
+  public isFirstCollapsed = true;
+  public isSecondCollapsed = true;
   ngOnInit() {
     this.currentPage=1;
     this.escorts.findAll().subscribe((data:  Escorts) => {
@@ -106,6 +106,17 @@ export class HomeComponent implements OnInit {
    this.model= Utils.filtering(this.selectedFacets,cat,subcat,this.modaldata,this.modaldatafull,this.model)
   }
 
+  value: number = 40;
+  highValue: number = 1500;
+  options: Options = {
+    floor: 50,
+    ceil: 1500
+  };
 
-  
+  priceRangeChanged(event,cat: any, subcat: any)
+  {
+    console.log(this.value)
+    console.log(this.highValue)
+    this.model= Utils.filtering(this.selectedFacets,cat,subcat,this.modaldata,this.modaldatafull,this.model)
+  }
 }

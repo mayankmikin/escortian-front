@@ -13,6 +13,7 @@ import { EscortListComponent } from './page/escort-list/escort-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from 'ngx-pagination'; 
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgbModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng5SliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -81,27 +81,45 @@
                         <div class="col-xl-3 sidebar">
                             <div class="sidebar-background"></div>
                             <div class="sidebar-block container range-slider">
-                                <h4 class="sidebar-title mbr-fonts-style mbr-text display-7">Price Range</h4>
-                                <div class="filter-cost" onselectstart="return false">
-                                    <div class="price-controls">
-                                        <label class="min-price">
-                                            <input class="min-input" type="text" value="auto" name="min">
-                                        </label>
-                                        <label class="max-price">
-                                            <input class="max-input" type="text" value="auto" name="max">
-                                        </label>
-                                    </div>
+                            <div class="price-range mbr-section-btn" buttons="0"><a class="btn btn-sm btn-info" href="">Filter</a></div>
+                            <div class="price-range-reset mbr-section-btn" buttons="0"><a class="btn btn-sm btn-success" href="">Show all</a></div>
+                            </div>
+
+                            <div class="sidebar-block container range-slider" *ngFor="let cat of facets.agg_keyword_long_facet">
+                                    
+                                
+                                <div class="filter-cost"  *ngIf="cat.key.includes('price')">
+                                        <h4 class="sidebar-title mbr-fonts-style mbr-text display-7" 
+                                       >{{cat.key}} Range (in €)</h4>
+                                    
                                     <div class="range-controls">
-                                        <div class="scale">
-                                            <div class="bar"></div>
-                                        </div>
-                                        <div class="toggle min-toggle"></div>
-                                        <div class="toggle max-toggle"></div>
+                                       
+                                        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (valueChange)="priceRangeChanged($event)"></ng5-slider>
+                                     
                                     </div>
                                 </div>
-                                <div class="price-range mbr-section-btn" buttons="0"><a class="btn btn-sm btn-info" href="">Filter</a></div>
-                                <div class="price-range-reset mbr-section-btn" buttons="0"><a class="btn btn-sm btn-success" href="">Show all</a></div>
-                            </div>
+                                <div class="filter-cost"   *ngIf="cat.key.includes('age')">
+                                        <h4 class="sidebar-title mbr-fonts-style mbr-text display-7" 
+                                       >{{cat.key}} Range (in years)</h4>
+                                    
+                                    <div class="range-controls">
+                                       
+                                        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (valueChange)="priceRangeChanged($event)"></ng5-slider>
+                                     
+                                    </div>
+                                </div>
+                                <div class="filter-cost"   *ngIf="cat.key.includes('height')">
+                                        <h4 class="sidebar-title mbr-fonts-style mbr-text display-7" 
+                                       >{{cat.key}} Range (in feet.inches)</h4>
+                                    
+                                    <div class="range-controls">
+                                       
+                                        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (valueChange)="priceRangeChanged($event)"></ng5-slider>
+                                     
+                                    </div>
+                                </div>
+                                
+                           </div>
                             <div class="sidebar-block container sidebar-categories">
                                 <h4 class="sidebar-title mbr-fonts-style mbr-text display-7">Filter By</h4>
                                 <div class="categories col-md-12">
@@ -115,7 +133,7 @@
                                                 <p>
                                                     <button type="button" class="btn btn-outline-primary" (click)="isFirstCollapsed = !isFirstCollapsed"
                                                             [attr.aria-expanded]="!isFirstCollapsed" aria-controls="collapseExample">
-                                                            Body Parts
+                                                            Body   Attributes
                                                     </button>
                                                   </p>
                                                   <div id="collapseExample" [ngbCollapse]="isFirstCollapsed">
@@ -143,7 +161,7 @@
                                             <p>
                                                 <button type="button" class="btn btn-outline-primary" (click)="isSecondCollapsed = !isSecondCollapsed"
                                                         [attr.aria-expanded]="!isSecondCollapsed" aria-controls="collapseExample">
-                                                        Service Type
+                                                        Service Attributes
                                                 </button>
                                               </p>
                                               <div id="collapseExample" [ngbCollapse]="isSecondCollapsed">
