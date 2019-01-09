@@ -39,8 +39,8 @@ export class HomeComponent implements OnInit {
   currentPage:number;
   //initializing p to one
   p: number = 1;
-  public isFirstCollapsed = false;
-  public isSecondCollapsed = false;
+  public isFirstCollapsed = true;
+  public isSecondCollapsed = true;
   ngOnInit() {
     this.currentPage=1;
     this.escorts.findAll().subscribe((data:  Escorts) => {
