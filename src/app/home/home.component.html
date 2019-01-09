@@ -130,7 +130,7 @@
                                                             <div class="form-check" *ngFor="let subcat of cat.facet_value.buckets">
                                                                     <input class="form-check-input"  name="{{ subcat.key }}" type="checkbox" id="{{subcat.key}}" (change)="onChangeCategory($event, cat.key , subcat.key)">
                                                                     <label class="form-check-label" for="{{subcat.key}}">
-                                                                        {{subcat.key}}
+                                                                        {{subcat.key}} ({{subcat.doc_count}})
                                                                     </label>
                                                                 </div>
         
@@ -158,7 +158,7 @@
                                                         <div class="form-check" *ngFor="let subcat of cat.facet_value.buckets">
                                                                 <input class="form-check-input"  name="{{ subcat.key }}" type="checkbox" id="{{subcat.key}}" (change)="onChangeCategory($event, cat.key , subcat.key)">
                                                                 <label class="form-check-label" for="{{subcat.key}}">
-                                                                    {{subcat.key}}
+                                                                    {{subcat.key}} ({{subcat.doc_count}})
                                                                 </label>
                                                             </div>
     

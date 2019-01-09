@@ -78,6 +78,7 @@ export class Utils
             console.log('selectedFacets element')
             console.log(element)
             modaldatafull.forEach(model => {
+                // for simple facet 
                   model.keyword_facets.forEach(simplefacet => {
       
                     console.log('model.keyword_facets')
@@ -106,6 +107,78 @@ export class Utils
       
                         }
                   });
+
+                  // for multi facets 
+                  model.keyword_multi_facets.forEach(simplefacet => {
+      
+                    console.log('model.keyword_facets')
+                    console.log(simplefacet)
+                   
+                        if(element.categoryname.includes(simplefacet.facet_name))
+                        {
+                          // console.log('***********************')
+                          // console.log('element.subcategories: ',element.subcategories)
+                          // console.log('simplefacet.facet_value: ',simplefacet.facet_value)
+                          // console.log(element.subcategories.includes(simplefacet.facet_value))
+                          // console.log('***********************')
+                          simplefacet.facet_value.forEach(multifacetElement => {
+
+                            if(element.subcategories.includes(multifacetElement))
+                            {
+                                console.log('checking for multifacet')
+                                console.log(multifacetElement)
+                                console.log(element.subcategories.includes(multifacetElement))
+                              if(!tempArr.includes(model)) // push 
+                                {
+                                    console.log('pushing model')
+                                    console.log(model)
+                                  // console.log('checking facets value')
+                                    //console.log(element.subcategories.includes(simplefacet.facet_value))
+                                    tempArr.push(model)
+                                }
+                               
+                            }
+                              
+                          });
+      
+                        }
+                  });
+
+                  // for long facets 
+                  model.long_facets.forEach(simplefacet => {
+      
+                    console.log('model.keyword_facets')
+                    console.log(simplefacet)
+                        if(element.categoryname.includes(simplefacet.facet_name))
+                        {
+                          // console.log('***********************')
+                          // console.log('element.subcategories: ',element.subcategories)
+                          // console.log('simplefacet.facet_value: ',simplefacet.facet_value)
+                          // console.log(element.subcategories.includes(simplefacet.facet_value))
+                          // console.log('***********************')
+                          simplefacet.facet_value.forEach(multifacetElement => {
+
+                            if(element.subcategories.includes(multifacetElement))
+                            {
+                                console.log('checking for multifacet')
+                                console.log(multifacetElement)
+                                console.log(element.subcategories.includes(multifacetElement))
+                              if(!tempArr.includes(model)) // push 
+                                {
+                                    console.log('pushing model')
+                                    console.log(model)
+                                  // console.log('checking facets value')
+                                    //console.log(element.subcategories.includes(simplefacet.facet_value))
+                                    tempArr.push(model)
+                                }
+                               
+                            }
+                              
+                          });
+                            
+                        }
+                  });
+
             });
       
           });
