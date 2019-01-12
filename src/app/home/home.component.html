@@ -16,9 +16,9 @@
             <div class="media-container-column mbr-white col-md-10">
                 <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-5">Find Your Companion</h1>
                 <br/>
-                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-1">
+                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-4">
                     Hot Czech Babes</h3>
-                <div class="mbr-section-btn align-center pt-3"><a class="btn btn-md btn-info display-4" href="../bootstrap-template/bootstrap-ecommerce-template/index.html#shop6-2">Explore</a></div>
+                <div class="mbr-section-btn align-center pt-3"><a class="btn btn-md btn-info display-2" href="../bootstrap-template/bootstrap-ecommerce-template/index.html#show-items">Explore</a></div>
             </div>
         </div>
     </div>
@@ -26,6 +26,118 @@
 <section class="mbr-gallery cid-rbaMy1tJOl" once="shops" id="shop6-2" data-sortbtn="btn-primary">
     <div>
     <div class="mbr-shop" shop__showsidebar="">
+
+   <!-- show side filter menu -->
+   <div class="row col-md-12">
+        <div class="col-xl-3 sidebar">
+                <div class="sidebar-background"></div>
+                <div class="sidebar-block container range-slider">
+                    <h4 class="sidebar-title mbr-fonts-style mbr-text display-7">Price Range</h4>
+                    <div class="filter-cost" onselectstart="return false">
+                        <div class="price-controls">
+                            <label class="min-price">
+                                <input class="min-input" type="text" value="auto" name="min">
+                            </label>
+                            <label class="max-price">
+                                <input class="max-input" type="text" value="auto" name="max">
+                            </label>
+                        </div>
+                        <div class="range-controls">
+                            <div class="scale">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="toggle min-toggle"></div>
+                            <div class="toggle max-toggle"></div>
+                        </div>
+                    </div>
+                    <div class="price-range mbr-section-btn" buttons="0"><a class="btn btn-sm btn-info" href="">Filter</a></div>
+                    <div class="price-range-reset mbr-section-btn" buttons="0"><a class="btn btn-sm btn-success" href="">Show all</a></div>
+                </div>
+                <div class="sidebar-block container sidebar-categories">
+                    <h4 class="sidebar-title mbr-fonts-style mbr-text display-7">Filter By</h4>
+                    <div class="categories col-md-12">
+                        <div class="categories-titles">
+
+
+                            <!-- Filter -->
+                            <div class="mbr-gallery-filter mbr-shop-filter container gallery-filter-active">
+                                    <!-- <li class="mbr-gallery-filter-all active display-7">Clear All</li> -->
+                                
+                                    <p>
+                                        <button type="button" class="btn btn-outline-primary" (click)="isFirstCollapsed = !isFirstCollapsed"
+                                                [attr.aria-expanded]="!isFirstCollapsed" aria-controls="collapseExample">
+                                                Body Attributes
+                                        </button>
+                                    </p>
+                                    <div id="collapseExample" [ngbCollapse]="isFirstCollapsed">
+                                        <div class="card">
+                                        <div class="card-body">
+                                            <ul buttons="0"  *ngFor="let cat of facets.agg_keyword_facet">
+                                                <label class="form-check-label" for="{{cat.key}}">
+                                                        <strong>{{cat.key}}</strong>
+                                                        <br/>
+                                                </label>
+                            
+                                                <div class="form-check" *ngFor="let subcat of cat.facet_value.buckets">
+                                                        <input class="form-check-input"  name="{{ subcat.key }}" type="checkbox" id="{{subcat.key}}" (change)="onChangeCategory($event, cat.key , subcat.key)">
+                                                        <label class="form-check-label" for="{{subcat.key}}">
+                                                            {{subcat.key}} ({{subcat.doc_count}})
+                                                        </label>
+                                                    </div>
+
+                                        
+                                        </ul>
+                                        </div>
+                                        </div>
+                                    </div>
+                    
+                                <p>
+                                    <button type="button" class="btn btn-outline-primary" (click)="isSecondCollapsed = !isSecondCollapsed"
+                                            [attr.aria-expanded]="!isSecondCollapsed" aria-controls="collapseExample">
+                                            Service Type
+                                    </button>
+                                </p>
+                                <div id="collapseExample" [ngbCollapse]="isSecondCollapsed">
+                                    <div class="card">
+                                    <div class="card-body">
+                                        <ul buttons="0"  *ngFor="let cat of facets.agg_keyword_multi_facet">
+                                            <label class="form-check-label" for="{{cat.key}}">
+                                                    <strong>{{cat.key}}</strong>
+                                                    <br/>
+                                            </label>
+                        
+                                            <div class="form-check" *ngFor="let subcat of cat.facet_value.buckets">
+                                                    <input class="form-check-input"  name="{{ subcat.key }}" type="checkbox" id="{{subcat.key}}" (change)="onChangeCategory($event, cat.key , subcat.key)">
+                                                    <label class="form-check-label" for="{{subcat.key}}">
+                                                        {{subcat.key}} ({{subcat.doc_count}})
+                                                    </label>
+                                                </div>
+
+                                    
+                                    </ul>
+                                    </div>
+                                    </div>
+                                </div>
+                            
+
+
+                            </div>
+                            
+                            <!-- <div class="form-check" *ngFor="let cat of facets">
+                                    <input class="form-check-input" [(ngModel)]="cat.key" name="{{ cat.key }}" type="checkbox" id="{{cat.key}}" (change)="onChangeCategory($event, cat)">
+                                    <label class="form-check-label" for="{{cat.key}}">
+                                        {{cat.key}}
+                                    </label>
+                                </div> -->
+
+
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
          <!-- pagination starts here  -->
 
 
@@ -36,7 +148,7 @@
             *ngIf="modelsize>pagesize" >
         
             </ngb-pagination> -->
-
+            <br/>
             <div class="col-12 justify-content-center">
             <pagination-controls (pageChange)="p = $event"
             responsive="true" 
@@ -46,8 +158,11 @@
     <!-- pagination ends here  -->
                 <!-- Shop Gallery -->
         <div class="row col-md-12">
+         
+
+                <!-- show items  -->
                 <div class="wrapper-shop-items col-xl-9">
-                    <div class="mbr-gallery-row">
+                    <div class="mbr-gallery-row" id="show-items">
                         <div>
                             <div class="shop-items" *ngFor="let e of model | paginate: { itemsPerPage: pagesize, currentPage: p }; let i = index  " >
 
@@ -77,137 +192,13 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-                        </div>
-                        <div class="col-xl-3 sidebar">
-                            <div class="sidebar-background"></div>
-                            <div class="sidebar-block container range-slider">
-                            <div class="price-range mbr-section-btn" buttons="0"><a class="btn btn-sm btn-info" href="">Filter</a></div>
-                            <div class="price-range-reset mbr-section-btn" buttons="0"><a class="btn btn-sm btn-success" href="">Show all</a></div>
-                            </div>
-
-                            <div class="sidebar-block container range-slider" *ngFor="let cat of facets.agg_keyword_long_facet">
-                                    
-                                
-                                <div class="filter-cost"  *ngIf="cat.key.includes('price')">
-                                        <h4 class="sidebar-title mbr-fonts-style mbr-text display-7" 
-                                       >{{cat.key}} Range (in €)</h4>
-                                    
-                                    <div class="range-controls">
-                                       
-                                        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (valueChange)="priceRangeChanged($event)"></ng5-slider>
-                                     
-                                    </div>
-                                </div>
-                                <div class="filter-cost"   *ngIf="cat.key.includes('age')">
-                                        <h4 class="sidebar-title mbr-fonts-style mbr-text display-7" 
-                                       >{{cat.key}} Range (in years)</h4>
-                                    
-                                    <div class="range-controls">
-                                       
-                                        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (valueChange)="priceRangeChanged($event)"></ng5-slider>
-                                     
-                                    </div>
-                                </div>
-                                <div class="filter-cost"   *ngIf="cat.key.includes('height')">
-                                        <h4 class="sidebar-title mbr-fonts-style mbr-text display-7" 
-                                       >{{cat.key}} Range (in feet.inches)</h4>
-                                    
-                                    <div class="range-controls">
-                                       
-                                        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (valueChange)="priceRangeChanged($event)"></ng5-slider>
-                                     
-                                    </div>
-                                </div>
-                                
-                           </div>
-                            <div class="sidebar-block container sidebar-categories">
-                                <h4 class="sidebar-title mbr-fonts-style mbr-text display-7">Filter By</h4>
-                                <div class="categories col-md-12">
-                                    <div class="categories-titles">
-
-
-                                        <!-- Filter -->
-                                        <div class="mbr-gallery-filter mbr-shop-filter container gallery-filter-active">
-                                                <!-- <li class="mbr-gallery-filter-all active display-7">Clear All</li> -->
-                                               
-                                                <p>
-                                                    <button type="button" class="btn btn-outline-primary" (click)="isFirstCollapsed = !isFirstCollapsed"
-                                                            [attr.aria-expanded]="!isFirstCollapsed" aria-controls="collapseExample">
-                                                            Body   Attributes
-                                                    </button>
-                                                  </p>
-                                                  <div id="collapseExample" [ngbCollapse]="isFirstCollapsed">
-                                                    <div class="card">
-                                                      <div class="card-body">
-                                                        <ul buttons="0"  *ngFor="let cat of facets.agg_keyword_facet">
-                                                            <label class="form-check-label" for="{{cat.key}}">
-                                                                    <strong>{{cat.key}}</strong>
-                                                                    <br/>
-                                                            </label>
-                                        
-                                                            <div class="form-check" *ngFor="let subcat of cat.facet_value.buckets">
-                                                                    <input class="form-check-input"  name="{{ subcat.key }}" type="checkbox" id="{{subcat.key}}" (change)="onChangeCategory($event, cat.key , subcat.key)">
-                                                                    <label class="form-check-label" for="{{subcat.key}}">
-                                                                        {{subcat.key}} ({{subcat.doc_count}})
-                                                                    </label>
-                                                                </div>
-        
-                                                       
-                                                    </ul>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                
-                                            <p>
-                                                <button type="button" class="btn btn-outline-primary" (click)="isSecondCollapsed = !isSecondCollapsed"
-                                                        [attr.aria-expanded]="!isSecondCollapsed" aria-controls="collapseExample">
-                                                        Service Attributes
-                                                </button>
-                                              </p>
-                                              <div id="collapseExample" [ngbCollapse]="isSecondCollapsed">
-                                                <div class="card">
-                                                  <div class="card-body">
-                                                    <ul buttons="0"  *ngFor="let cat of facets.agg_keyword_multi_facet">
-                                                        <label class="form-check-label" for="{{cat.key}}">
-                                                                <strong>{{cat.key}}</strong>
-                                                                <br/>
-                                                        </label>
-                                    
-                                                        <div class="form-check" *ngFor="let subcat of cat.facet_value.buckets">
-                                                                <input class="form-check-input"  name="{{ subcat.key }}" type="checkbox" id="{{subcat.key}}" (change)="onChangeCategory($event, cat.key , subcat.key)">
-                                                                <label class="form-check-label" for="{{subcat.key}}">
-                                                                    {{subcat.key}} ({{subcat.doc_count}})
-                                                                </label>
-                                                            </div>
-    
-                                                   
-                                                </ul>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                           
-
-
-                                        </div>
-                                        
-                                        <!-- <div class="form-check" *ngFor="let cat of facets">
-                                                <input class="form-check-input" [(ngModel)]="cat.key" name="{{ cat.key }}" type="checkbox" id="{{cat.key}}" (change)="onChangeCategory($event, cat)">
-                                                <label class="form-check-label" for="{{cat.key}}">
-                                                    {{cat.key}}
-                                                </label>
-                                            </div> -->
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                        
+        </div>
 
                     
                 </div>
-            </div>
+    </div>
             
             </section>
 
