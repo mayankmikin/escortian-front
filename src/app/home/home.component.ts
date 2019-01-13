@@ -8,7 +8,7 @@ import { Utils } from '../model/utils';
 import { Facets } from '../model/facets';
 import { ignoreElements } from 'rxjs/operators';
 import { elementStart } from '@angular/core/src/render3';
-
+import { Options } from 'ng5-slider';
 
 
 @Component({
@@ -130,6 +130,14 @@ export class HomeComponent implements OnInit {
    this.model= Utils.filtering(this.selectedFacets,cat,subcat,this.modaldata,this.modaldatafull,this.model)
   }
 
+
+  // slider configurations 
+      value: number = 40;
+      highValue: number = 60;
+      options: Options = {
+        floor: 0,
+        ceil: 100
+      };
 
   
 }

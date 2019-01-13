@@ -48,7 +48,7 @@
                 <div class= "row">
                         <div class="sidebar-block container range-slider col-lg-2 col-xl-2" *ngFor="let cat of facets.agg_keyword_long_facet">
                             <h4 class="sidebar-title mbr-fonts-style mbr-text display-7">{{cat.key}}</h4>
-                            <div class="filter-cost" onselectstart="return false">
+                            <!-- <div class="filter-cost" onselectstart="return false">
                                 <div class="price-controls">
                                     <label class="min-price">
                                         <input class="min-input" type="text" value="auto" name="min">
@@ -64,8 +64,8 @@
                                     <div class="toggle min-toggle"></div>
                                     <div class="toggle max-toggle"></div>
                                 </div>
-                            </div>
-                            
+                            </div> -->
+                            <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
                         </div>
                 </div>
                 <div class="sidebar-block container sidebar-categories row col-lg-10 col-xl-10">
