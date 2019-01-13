@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   p: number = 1;
   public isFirstCollapsed = true;
   public isSecondCollapsed = true;
+  public isFilterCollapsed=true;
   ngOnInit() {
     this.currentPage=1;
     this.escorts.findAll().subscribe((data:  Escorts) => {
