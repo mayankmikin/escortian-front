@@ -65,7 +65,40 @@
                                     <div class="toggle max-toggle"></div>
                                 </div>
                             </div> -->
-                            <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
+                            <ng5-slider [(value)]="ageslider.minValue"
+                             [(highValue)]="ageslider.maxValue"
+                             *ngIf="cat.key == 'age'"
+                            (userChangeEnd)="onUserChangeEnd($event)"
+                            [options]="ageslider.options"></ng5-slider>
+                            <ng5-slider [(value)]="heightslider.value"
+                             *ngIf="cat.key == 'height'"
+                            (userChangeEnd)="onUserChangeEnd($event)"
+                            [options]="heightslider.options"></ng5-slider>
+
+                            <ng5-slider [(value)]="pricehalfhourslider.minValue"
+                             [(highValue)]="pricehalfhourslider.maxValue"
+                             *ngIf="cat.key == 'price half hour'"
+                            (userChangeEnd)="onUserChangeEnd($event)"
+                            [options]="pricehalfhourslider.options"></ng5-slider>
+
+                            <ng5-slider [(value)]="priceperhourslider.minValue"
+                             [(highValue)]="priceperhourslider.maxValue"
+                             *ngIf="cat.key == 'price per hour'"
+                            (userChangeEnd)="onUserChangeEnd($event)"
+                            [options]="priceperhourslider.options"></ng5-slider>
+
+                            <ng5-slider [(value)]="pricetwohourslider.minValue"
+                             [(highValue)]="pricetwohourslider.maxValue"
+                             *ngIf="cat.key == 'price two hours'"
+                            (userChangeEnd)="onUserChangeEnd($event)"
+                            [options]="pricetwohourslider.options"></ng5-slider>
+
+                            <ng5-slider [(value)]="weightslider.minValue"
+                             [(highValue)]="weightslider.maxValue"
+                             *ngIf="cat.key == 'weight'"
+                            (userChangeEnd)="onUserChangeEnd($event)"
+                            [options]="weightslider.options"></ng5-slider>
+
                         </div>
                 </div>
                 <div class="sidebar-block container sidebar-categories row col-lg-10 col-xl-10">

@@ -8,7 +8,7 @@ import { Utils } from '../model/utils';
 import { Facets } from '../model/facets';
 import { ignoreElements } from 'rxjs/operators';
 import { elementStart } from '@angular/core/src/render3';
-import { Options } from 'ng5-slider';
+import { Options, ChangeContext, PointerType } from 'ng5-slider';
 
 
 @Component({
@@ -132,12 +132,92 @@ export class HomeComponent implements OnInit {
 
 
   // slider configurations 
-      value: number = 40;
-      highValue: number = 60;
-      options: Options = {
-        floor: 0,
-        ceil: 100
+  //age
+  logText: string = '';
+      ageslider: RangeSliderModel = {
+        minValue: 18,
+        maxValue: 30,
+        options: {
+          floor: 18,
+          ceil: 50
+        }
       };
 
+      heightslider: SimpleSliderModel  = {
+        value: 5.0,
+        options: {
+          floor: 5.0,
+          ceil: 6.6,
+          //showTicks: true,
+          step: 0.1,
+         
+        }
+      };
+      pricehalfhourslider: RangeSliderModel = {
+        minValue: 100,
+        maxValue: 300,
+        options: {
+          floor: 100,
+          ceil: 5000,
+          translate: (value: number): string => {
+            return '€' + value;
+          }
+        }
+      };
+      priceperhourslider: RangeSliderModel = {
+        minValue: 100,
+        maxValue: 300,
+        options: {
+          floor: 100,
+          ceil: 5000,
+          translate: (value: number): string => {
+            return '€' + value;
+          }
+        }
+      };
+      pricetwohourslider: RangeSliderModel = {
+        minValue: 100,
+        maxValue: 300,
+        options: {
+          floor: 100,
+          ceil: 5000,
+          translate: (value: number): string => {
+            return '€' + value;
+          }
+        }
+      };
+      weightslider: RangeSliderModel = {
+        minValue: 50,
+        maxValue: 65,
+        options: {
+          floor: 40,
+          ceil: 100,
+          translate: (value: number): string => {
+            return 'kg ' + value;
+          }
+        }
+      };
+      onUserChangeEnd(changeContext: ChangeContext): void {
+        this.logText += `onUserChangeEnd(${this.getChangeContextString(changeContext)})\n`;
+        console.log(this.logText)
+      }
+      getChangeContextString(changeContext: ChangeContext): string {
+        return `{pointerType: ${changeContext.pointerType === PointerType.Min ? 'Min' : 'Max'}, ` +
+               `value: ${changeContext.value}, ` +
+               `highValue: ${changeContext.highValue}}`;
+      }
+
   
+
+
+}
+
+interface SimpleSliderModel {
+  value: number;
+  options: Options;
+}
+interface RangeSliderModel {
+  minValue: number;
+  maxValue: number;
+  options: Options;
 }
