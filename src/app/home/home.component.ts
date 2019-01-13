@@ -6,6 +6,8 @@ import {NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
 import { SelectedFacets, SelectedCategory } from '../model/filtering';
 import { Utils } from '../model/utils';
 import { Facets } from '../model/facets';
+import { ignoreElements } from 'rxjs/operators';
+import { elementStart } from '@angular/core/src/render3';
 
 
 
@@ -42,6 +44,26 @@ export class HomeComponent implements OnInit {
   public isFirstCollapsed = true;
   public isSecondCollapsed = true;
   public isFilterCollapsed=true;
+  public isPaginationdisabled=false;
+
+  // for disbaling pagination 
+  showall(isPaginationdisabled){
+    this.isPaginationdisabled=!isPaginationdisabled
+    console.log('pagination disabled')
+    console.log(this.isPaginationdisabled)
+    if(this.isPaginationdisabled)
+    {
+      this.model=this.modaldatafull
+      this.pagesize=this.modelsize
+    }
+    else
+    {
+      this.pagesize=9;
+    }
+    
+
+  }
+
   ngOnInit() {
     this.currentPage=1;
     this.escorts.findAll().subscribe((data:  Escorts) => {
@@ -89,6 +111,7 @@ export class HomeComponent implements OnInit {
     });
 
   }
+ 
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

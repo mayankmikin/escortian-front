@@ -23,12 +23,15 @@
                     
                     <a class="btn btn-sm btn-info" href="#" (click)="isFilterCollapsed = !isFilterCollapsed"
                     [attr.aria-expanded]="!isFilterCollapsed" aria-controls="collapseExample">Filter</a>
-                    <a class="btn btn-sm btn-success " href="#">Show all</a>
+                    <a class="btn btn-sm btn-success " href="#" (click)="showall(isPaginationdisabled)" *ngIf="!isPaginationdisabled">Show all</a>
+                    <a class="btn btn-sm btn-success " href="#" (click)="showall(isPaginationdisabled)" *ngIf="isPaginationdisabled">Show Pages</a>
                 </div>
+
                 <!-- <div class="row">
                     <div class="price-range mbr-section-btn col-lg-2 col-xl-2" buttons="0"><a class="btn btn-sm btn-info" href="">Filter</a></div>
                     <div class="price-range-reset mbr-section-btn col-lg-2 col-xl-2" buttons="0"><a class="btn btn-sm btn-success" href="">Show all</a></div>
                 </div> -->
+
             </div>
         </div>
     </div>
@@ -171,10 +174,11 @@
         
             </ngb-pagination> -->
             <br/>
-            <div class="col-12 justify-content-center">
+            <div class="col-12 justify-content-center" [class.hidden]="isPaginationdisabled">
             <pagination-controls (pageChange)="p = $event"
             responsive="true" 
             autoHide="true"
+            
             ></pagination-controls>
             </div>
     <!-- pagination ends here  -->
@@ -229,7 +233,7 @@
         
             </ngb-pagination> -->
             <br/>
-            <div class="col-12 justify-content-center">
+            <div class="col-12 justify-content-center" [class.hidden]="isPaginationdisabled">
             <pagination-controls (pageChange)="p = $event"
             responsive="true" 
             autoHide="true"
